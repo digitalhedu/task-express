@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <section class="align-items-center bg-primary d-flex justify-content-center vh-100 vw-100">
+        <article class="card bg-white col-10 col-md-8 col-lg-10 p-0">
+            <section class="card-header">
+                <h1 class="display-2 text-center text-primary"> 
+                    <a href="/task/create" class="btn btn-sm btn-outline-dark">New</a>
+                        My Tasks  
+                    <a href="/task" class="btn btn-sm btn-outline-primary">Reload</a>
+                </h1>
+            </section>
+            <section class="card-body">
+                <div class="row justify-content-around">
+                    <% list.forEach( task => { %>
+                        <div class="card mb-3 col-12 col-md-6 col-lg-4 p-0">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= task.title %> 
+                                    <span class="badge badge-<%= task.status.color %> "> <%= task.status.label %> </span>
+                                </h5>
+                                <p class="card-text"><%= task.user.name %></p>
+                                <a href="/task/modify/<%= task.id %>" class="btn btn-block mb-3 btn-warning">Edit</a>
+                                <form action="/task/delete/<%= task.id %>?_method=delete" method="post">
+                                    <button type="submit" class="btn btn-block btn-danger">Delete</button> 
+                                </form>    
+                            </div>
+                        </div>
+                    <% } ) %>
+                </div>
+
+            </section>
+        </article>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

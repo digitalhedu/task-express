@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <section class="align-items-center bg-primary d-flex justify-content-center vh-100 vw-100">
+        <article class="card bg-dark col-10 col-md-8 col-lg-6 p-0">
+            <div class="card-header">
+                <h1 class="display-2 text-center text-primary"> New Task </h1>
+            </div>
+            <form action="/task/upload/<%= select.id %>?_method=PUT" method="post" class=" card-body">
+                
+                <select name="user" class="custom-select mb-2">
+                    <% users.forEach(user => { %>
+                        <% if( user.id == select.user.id){ %>
+                            <option value="<%= user.id %>" selected><%= user.name %></option>
+                        <% } else { %>
+                            <option value="<%= user.id %>"><%= user.name %></option>
+                        <% } %>
+                    <% })%>
+                </select>
+                <select name="status" class="custom-select">
+                    <% status.forEach(state => { %>
+                        <% if( state.id == select.status.id){ %>
+                            <option value="<%= state.id %>" class="bg-<%= state.color %>" selected><%= state.label %></option>
+                        <% } else { %>
+                            <option value="<%= state.id %>" class="bg-<%= state.color %>"><%= state.label %></option>
+                        <% } %>
+                    <% })%>
+                </select>
+                <textarea class="form-control my-2" name="title" cols="30" rows="10"><%= select.title %></textarea>
+
+                <button type="submit" class="btn btn-block btn-primary">Enviar</button>
+            </form>
+        </article>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

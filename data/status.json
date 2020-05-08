@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "label": "In Progress",
+      "color": "warning"
+    },
+    {
+      "id": 2,
+      "label": "New",
+      "color": "primary"
+    },
+    {
+      "id": 3,
+      "label": "Done",
+      "color": "success"
+    },
+    {
+      "id": 4,
+      "label": "Error",
+      "color": "danger"
+    }
+  ]

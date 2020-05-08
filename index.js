@@ -20,7 +20,10 @@ app.use(body.urlencoded({extended: true}));
 
 app.use(methodOverride('_method'));
 
+
 const taskRouter = require("./routes/taskRoutes");
+
+app.get("*" (req,res) => res.redirect("/task") );
 
 app.use("/task",taskRouter);
 
